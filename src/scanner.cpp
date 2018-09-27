@@ -1,24 +1,15 @@
 #include <iostream>
 
 #include "scanner.hpp"
+#include "StdinFilter.hpp"
 
 bool get_token(std::string &s)
 {
-    int line_count = 1;
+    StdinFilter filter;
 
     char c;
     
-    while (std::cin.get(c))
-    {
-        if (isspace(c))
-        {
-            if (c == '\n') { line_count++; }
-            
-            continue; // skip whitespace
-        }
-
-        break; 
-    }
+    filter.get(c);
 
     if (std::cin.eof())
     {
