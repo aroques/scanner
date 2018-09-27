@@ -9,7 +9,7 @@ public:
     bool get(char &c);
     
 private:
-
+    void get_first_char_after_comment(char &c);
 };
 
 #endif // !STDINFILTER_HPP
