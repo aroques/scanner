@@ -30,6 +30,10 @@ bool StdinFilter::get(char &c)
     return 1;
 }
 
+/*
+    Private
+*/
+
 void StdinFilter::get_first_char_after_comment(char &c)
 {
     while (std::cin.get(c))
