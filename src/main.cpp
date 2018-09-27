@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
         std::cin.rdbuf(file.rdbuf());
     }
 
-    print_stdin();
+    test_scanner();
 
     if (file.is_open()) { file.close(); };
 

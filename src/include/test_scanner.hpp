@@ -1,1 +1,1 @@
-void print_stdin();
+void test_scanner();
