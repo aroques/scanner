@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "test_scanner.hpp"
+
 // Prototypes
 void validate_argc(int argc);
 std::ifstream open_file(char* argv[]);
@@ -18,12 +20,7 @@ int main(int argc, char* argv[])
         std::cin.rdbuf(file.rdbuf());
     }
 
-    char c;
-
-    while (std::cin.get(c))
-    {
-        std::cout << c << std::endl; 
-    }
+    print_stdin();
 
     if (file.is_open()) { file.close(); };
 
