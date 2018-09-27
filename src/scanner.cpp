@@ -2,7 +2,7 @@
 
 #include "scanner.hpp"
 
-void print_stdin()
+bool get_token(std::string &s)
 {
     int line_count = 1;
 
@@ -17,8 +17,17 @@ void print_stdin()
             continue; // skip whitespace
         }
 
-        std::cout << c << std::endl; 
+        break; 
     }
 
-    std::cout << line_count << std::endl;
+    if (std::cin.eof())
+    {
+        return 0;
+    }
+
+    std::string str(1, c);
+
+    s = str;
+
+    return 1;
 }

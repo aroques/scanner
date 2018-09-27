@@ -5,5 +5,11 @@
 
 void test_scanner()
 {
-    print_stdin();
+    std::string token;
+    
+    while (get_token(token))
+    {
+        std::cout << token << std::endl;
+    }
+    
 }

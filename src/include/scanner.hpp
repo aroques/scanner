@@ -1,1 +1,1 @@
-void print_stdin();
+bool get_token(std::string &s);
