@@ -8,13 +8,15 @@ static const char COMMENT_CHAR = '$'; // The character that starts and ends comm
     Public
 */
 
-bool StdinFilter::get(char &c)
+char StdinFilter::get_char()
 {
+    char c;
+
     while (std::cin.get(c))
     {
         if (c == COMMENT_CHAR) // start of comment
         {
-            get_first_char_after_comment(c);
+            c = get_first_char_after_comment();
         }
 
         if (isspace(c))
@@ -27,15 +29,17 @@ bool StdinFilter::get(char &c)
         break;
     }
 
-    return 1;
+    return c;
 }
 
 /*
     Private
 */
 
-void StdinFilter::get_first_char_after_comment(char &c)
+char StdinFilter::get_first_char_after_comment()
 {
+    char c;
+
     while (std::cin.get(c))
     {
         if (c == '\n') { this->line_number++; }
@@ -46,4 +50,6 @@ void StdinFilter::get_first_char_after_comment(char &c)
             break;
         }
     }
+
+    return c;
 }

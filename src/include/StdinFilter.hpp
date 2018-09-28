@@ -6,10 +6,10 @@ class StdinFilter
 public:
     int line_number = 1;
 
-    bool get(char &c);
+    char get_char();
     
 private:
-    void get_first_char_after_comment(char &c);
+    char get_first_char_after_comment();
 };
 
 #endif // !STDINFILTER_HPP
