@@ -12,7 +12,7 @@ bool StdinFilter::get(char &c)
 {
     while (std::cin.get(c))
     {
-        if (c == COMMENT_CHAR)
+        if (c == COMMENT_CHAR) // start of comment
         {
             get_first_char_after_comment(c);
         }
