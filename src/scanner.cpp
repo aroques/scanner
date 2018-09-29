@@ -45,16 +45,6 @@ Token get_token()
             next_char = filter.get_char();
         }
     }
-
-    if (std::cin.eof())
-    {
-        return Token {
-            -1,
-            "",
-            -1  
-        };
-    }
-
     return Token {
         -1,
         "",

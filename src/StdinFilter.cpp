@@ -10,7 +10,7 @@ static const char COMMENT_CHAR = '$'; // The character that starts and ends comm
 
 char StdinFilter::get_char()
 {
-    char c;
+    char c = EOF;
 
     while (std::cin.get(c))
     {
