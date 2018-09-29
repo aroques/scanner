@@ -27,16 +27,7 @@ Token get_token()
             exit(EXIT_FAILURE);
         }
         
-        if (next_state >= FINAL)
-        {
-            // Final state
-            // TBD: Add logic for keyword tokens
-            return Token {
-                next_state,
-                token_instance,
-                filter.line_number  
-            };
-        }
+        if (next_state >= FINAL) { break; } // Final state
         else
         {
             // Not final state
@@ -45,9 +36,10 @@ Token get_token()
             next_char = filter.get_char();
         }
     }
+
     return Token {
-        -1,
-        "",
-        -1  
+        next_state,
+        token_instance,
+        filter.line_number  
     };
 }
