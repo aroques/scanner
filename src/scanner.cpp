@@ -6,7 +6,8 @@
 #include "scanner.hpp"
 #include "StdinFilter.hpp"
 #include "FSATable.hpp"
-#include "FinalState.hpp"
+#include "Token.hpp"
+#include "Error.hpp"
 
 bool get_token(std::string &s)
 {
@@ -20,13 +21,13 @@ bool get_token(std::string &s)
     {
         next_state = table[state][col_idx(next_char)];
 
-        if (next_state == ERROR)
+        if (next_state >= ERROR)
         {
             std::cout << "scanner error" << std::endl;
             exit(EXIT_FAILURE);
         }
         
-        if (next_state > ERROR)
+        if (next_state >= FINAL)
         {
             // Final state
         }

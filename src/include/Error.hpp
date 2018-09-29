@@ -1,0 +1,6 @@
+const int ERROR = 200;
+
+enum ERROR
+{
+    START_WITH_UNDERSCORE = ERROR
+};
