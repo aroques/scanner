@@ -6,8 +6,7 @@
 #include "scanner.hpp"
 #include "StdinFilter.hpp"
 #include "FSATable.hpp"
-
-enum Column {OP_DELIM, LETTER, NUMBER, EOF_CHAR, WS, DOLLAR_SIGN, UNDERSCORE};
+#include "FinalState.hpp"
 
 bool get_token(std::string &s)
 {
@@ -15,10 +14,29 @@ bool get_token(std::string &s)
     char next_char = filter.get_char();
     int state = 0, next_state;
     std::vector<std::array<int, NUM_COLUMNS>> table = get_FSA_table();
+    std::string token;
 
     while (state < 5) // not final state
     {
-        state = 5;
+        next_state = table[state][col_idx(next_char)];
+
+        if (next_state == ERROR)
+        {
+            std::cout << "scanner error" << std::endl;
+            exit(EXIT_FAILURE);
+        }
+        
+        if (next_state > ERROR)
+        {
+            // Final state
+        }
+        else
+        {
+            // Not final state
+            state = next_state;
+            token += next_char;
+            next_char = filter.get_char();
+        }
     }
 
     if (std::cin.eof())

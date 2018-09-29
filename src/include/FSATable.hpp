@@ -7,5 +7,6 @@
 static const int NUM_COLUMNS = 7;
 
 std::vector<std::array<int, NUM_COLUMNS>> get_FSA_table();
+int col_idx(char c);
 
 #endif // !FSATABLE_HPP
