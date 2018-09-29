@@ -1,4 +1,7 @@
 #include <iostream>
+#include <vector>
+#include <string>
+#include <array>
 
 #include "scanner.hpp"
 #include "StdinFilter.hpp"
@@ -9,7 +12,7 @@ bool get_token(std::string &s)
 
     char next_char = filter.get_char();
     
-    int state;
+    int state = 0, next_state;
 
     while (state < 5) // not final state
     {
@@ -25,8 +28,12 @@ bool get_token(std::string &s)
 
     s = str;
 
+    std::vector<std::array<std::string, 4>> table;
+
     return 1;
 }
+
+
 
 // tokenType FADriver() // assume nextChar set, and used as column index
 // { 
