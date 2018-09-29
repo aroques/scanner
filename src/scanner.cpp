@@ -5,14 +5,16 @@
 
 #include "scanner.hpp"
 #include "StdinFilter.hpp"
+#include "FSATable.hpp"
+
+enum Column {OP_DELIM, LETTER, NUMBER, EOF_CHAR, WS, DOLLAR_SIGN, UNDERSCORE};
 
 bool get_token(std::string &s)
 {
     StdinFilter filter;
-
     char next_char = filter.get_char();
-    
     int state = 0, next_state;
+    std::vector<std::array<int, NUM_COLUMNS>> table = get_FSA_table();
 
     while (state < 5) // not final state
     {
@@ -27,8 +29,6 @@ bool get_token(std::string &s)
     std::string str(1, next_char);
 
     s = str;
-
-    std::vector<std::array<std::string, 4>> table;
 
     return 1;
 }
