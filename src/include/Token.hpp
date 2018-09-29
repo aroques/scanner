@@ -1,3 +1,6 @@
+#ifndef TOKEN_HPP
+#define TOKEN_HPP
+
 #include <string>
 
 const int FINAL = 100;
@@ -16,3 +19,6 @@ struct Token
     std::string instance;
     int line_number;
 };
+
+
+#endif // !TOKEN_HPP

@@ -9,15 +9,15 @@
 #include "Token.hpp"
 #include "Error.hpp"
 
-bool get_token(std::string &s)
+Token get_token()
 {
     StdinFilter filter;
     char next_char = filter.get_char();
     int state = 0, next_state;
     std::vector<std::array<int, NUM_COLUMNS>> table = get_FSA_table();
-    std::string token;
+    std::string token_instance = "";
 
-    while (state < 5) // not final state
+    while (state < FINAL) // not final state
     {
         next_state = table[state][col_idx(next_char)];
 
@@ -30,26 +30,36 @@ bool get_token(std::string &s)
         if (next_state >= FINAL)
         {
             // Final state
+            // TBD: Add logic for keyword tokens
+            return Token {
+                next_state,
+                token_instance,
+                filter.line_number  
+            };
         }
         else
         {
             // Not final state
             state = next_state;
-            token += next_char;
+            token_instance += next_char;
             next_char = filter.get_char();
         }
     }
 
     if (std::cin.eof())
     {
-        return 0;
+        return Token {
+            -1,
+            "",
+            -1  
+        };
     }
 
-    std::string str(1, next_char);
-
-    s = str;
-
-    return 1;
+    return Token {
+        -1,
+        "",
+        -1  
+    };
 }
 
 

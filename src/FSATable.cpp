@@ -1,5 +1,5 @@
 #include "FSATable.hpp"
-#include <cstring>
+#include <iostream>
 
 std::vector<std::array<int, NUM_COLUMNS>> get_FSA_table()
 {
@@ -17,7 +17,7 @@ enum Column {OP_DELIM, LETTER, NUMBER, EOF_CHAR, WS, DOLLAR_SIGN, UNDERSCORE};
 int col_idx(char c)
 {
     std::string op_delim = "=<>:+-*/%%.(),{};[]";
-    if (op_delim.find(c)) { return OP_DELIM; }
+    if (op_delim.find(c) != std::string::npos) { return OP_DELIM; }
     
     if (c == '_') { return UNDERSCORE; }
 

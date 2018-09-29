@@ -10,6 +10,7 @@ public:
     
 private:
     char get_first_char_after_comment();
+    char get_last_whitespace_char(char c);
 };
 
 #endif // !STDINFILTER_HPP

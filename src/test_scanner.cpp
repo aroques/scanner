@@ -2,14 +2,19 @@
 
 #include "test_scanner.hpp"
 #include "scanner.hpp"
+#include "Token.hpp"
 
 void test_scanner()
 {
-    std::string token;
+    Token token = get_token();
     
-    while (get_token(token))
+    int cnt = 0;
+    while (cnt < 3)//(token.type != END_OF_FILE_TK)
     {
-        std::cout << token << std::endl;
+        std::cout << token.instance << std::endl;
+        token = get_token();
+
+        cnt++;
     }
     
 }

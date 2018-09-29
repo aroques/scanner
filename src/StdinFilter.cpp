@@ -21,9 +21,7 @@ char StdinFilter::get_char()
 
         if (isspace(c))
         {
-            if (c == '\n') { this->line_number++; }
-            
-            continue; // skip whitespace
+            c = get_last_whitespace_char(c);
         }
 
         break;
@@ -49,6 +47,27 @@ char StdinFilter::get_first_char_after_comment()
             std::cin.get(c);
             break;
         }
+    }
+
+    return c;
+}
+
+
+char StdinFilter::get_last_whitespace_char(char c)
+{
+    char next_char;
+
+    while (std::cin.get(next_char))
+    {
+        if (next_char == '\n') { this->line_number++; }
+
+        if (!isspace(next_char)) 
+        {
+            std::cin.unget();
+            break;
+        }
+        
+        c = next_char;
     }
 
     return c;

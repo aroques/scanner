@@ -1,6 +1,8 @@
 #ifndef SCANNER_HPP
 #define SCANNER_HPP
 
-bool get_token(std::string &s);
+#include "Token.hpp"
+
+Token get_token();
 
 #endif // !SCANNER_HPP
