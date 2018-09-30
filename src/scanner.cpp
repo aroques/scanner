@@ -2,19 +2,14 @@
 #include <vector>
 #include <string>
 #include <array>
-#include <algorithm>
 
 #include "scanner.hpp"
-#include "StdinFilter.hpp"
-#include "FSATable.hpp"
+#include "container.hpp"
 #include "Token.hpp"
 #include "Error.hpp"
-
-template <typename A, typename B>
-bool item_in_list(A item, B list)
-{
-    return std::find(list.begin(), list.end(), item) != list.end();
-}
+#include "State.hpp"
+#include "StdinFilter.hpp"
+#include "FSATable.hpp"
 
 Token get_token()
 {
@@ -24,7 +19,7 @@ Token get_token()
     std::vector<std::array<int, NUM_COLUMNS>> table = get_FSA_table();
     std::string token_instance = "";
 
-    std::array<int, 2> passive_states = {0, 4};
+    std::array<int, 2> passive_states = {LEADING_WHITESPACE, INSIDE_COMMENT};
 
     while (state < FINAL) // not final state
     {
