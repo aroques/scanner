@@ -13,5 +13,4 @@ void test_scanner()
         std::cout << token.instance << std::endl;
         token = get_token();
     }
-    
 }

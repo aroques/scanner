@@ -14,15 +14,15 @@ char StdinFilter::get_char()
 
     while (std::cin.get(c))
     {
-        if (c == COMMENT_CHAR) // start of comment
-        {
-            c = get_first_char_after_comment();
-        }
+        // if (c == COMMENT_CHAR) // start of comment
+        // {
+        //     c = get_first_char_after_comment();
+        // }
 
-        if (isspace(c))
-        {
-            c = get_last_whitespace_char(c);
-        }
+        // if (isspace(c))
+        // {
+        //     c = get_last_whitespace_char(c);
+        // }
 
         break;
     }
