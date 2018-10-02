@@ -1,8 +1,10 @@
 $this is my code file$
 a = x + y
 
-_var_this = x + b
+var_this = x + b
 
 b = 3 + 4
 
 c = a*b
+
+$\test$a=3

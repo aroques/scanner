@@ -4,15 +4,15 @@
 std::vector<std::array<int, NUM_COLUMNS>> get_FSA_table()
 {
     std::vector<std::array<int, NUM_COLUMNS>> table;
-    table.push_back({1, 2, 3, 103, 0, 4, 201});
-    table.push_back({100, 100, 100, 100, 100, 100, 100});
-    table.push_back({101, 2, 2, 101, 101, 101, 2});
-    table.push_back({8, 102, 3, 102, 102, 102, 102});
-    table.push_back({4, 4, 4, 103, 4, 0, 4});
+    table.push_back({1, 2, 3, 103, 0, 4, 200, 201});
+    table.push_back({100, 100, 100, 100, 100, 100, 100, 100});
+    table.push_back({101, 2, 2, 101, 101, 101, 2, 101});
+    table.push_back({8, 102, 3, 102, 102, 102, 102, 102});
+    table.push_back({4, 4, 4, 103, 4, 0, 4, 4});
     return table;
 }
 
-enum Column {OP_DELIM, LETTER, NUMBER, EOF_CHAR, WS, DOLLAR_SIGN, UNDERSCORE};
+enum Column {OP_DELIM, LETTER, NUMBER, EOF_CHAR, WS, DOLLAR_SIGN, UNDERSCORE, NOT_IN_ALPHABET};
 
 int col_idx(char c)
 {
@@ -31,5 +31,5 @@ int col_idx(char c)
 
     if (c == EOF) { return EOF_CHAR; }
 
-    return -1; // character not matched
+    return NOT_IN_ALPHABET;
 }

@@ -27,7 +27,7 @@ Token get_token()
 
         if (next_state >= ERROR)
         {
-            std::cout << "scanner error: " << get_error_reason(next_state) << std::endl;
+            std::cout << "scanner error: " << get_error_reason(next_state, next_char) << std::endl;
             exit(EXIT_FAILURE);
         }
         
