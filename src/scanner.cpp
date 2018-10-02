@@ -5,7 +5,7 @@
 
 #include "scanner.hpp"
 #include "container.hpp"
-#include "Token.hpp"
+#include "token.hpp"
 #include "State.hpp"
 #include "FSATable.hpp"
 
@@ -53,7 +53,7 @@ Token get_token()
     std::cin.unget(); // unget look-ahead
 
     return Token {
-        next_state,
+        get_token_type(next_state, token_instance),
         token_instance,
         line_number  
     };

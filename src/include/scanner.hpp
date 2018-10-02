@@ -1,7 +1,7 @@
 #ifndef SCANNER_HPP
 #define SCANNER_HPP
 
-#include "Token.hpp"
+#include "token.hpp"
 
 Token get_token();
 

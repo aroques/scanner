@@ -2,7 +2,7 @@
 
 #include "test_scanner.hpp"
 #include "scanner.hpp"
-#include "Token.hpp"
+#include "token.hpp"
 
 void test_scanner()
 {
