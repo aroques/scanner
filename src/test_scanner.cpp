@@ -6,10 +6,9 @@
 
 void test_scanner()
 {
-    Token token;
-    
     print_token_header();
 
+    Token token;
     do 
     {       
         token = get_token();
