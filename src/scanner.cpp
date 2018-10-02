@@ -9,7 +9,7 @@
 #include "State.hpp"
 #include "FSATable.hpp"
 
-char get_next_char();
+static char get_next_char();
 
 Token get_token()
 {
@@ -59,7 +59,7 @@ Token get_token()
     };
 }
 
-char get_next_char()
+static char get_next_char()
 {
     char c = EOF;
     

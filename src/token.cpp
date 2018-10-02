@@ -4,6 +4,8 @@
 
 static char format_str[100] = "%-20s %-10s %-2s\n";
 
+static std::string get_token_type(int type);
+
 void print_token_header()
 {
     printf(format_str, "Type", "Instance", "Line No");
@@ -17,7 +19,7 @@ void print_token(Token t)
         t.instance.c_str(), std::to_string(t.line_number).c_str());
 }
 
-std::string get_token_type(int type)
+static std::string get_token_type(int type)
 {
     switch (type)
     {
