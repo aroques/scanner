@@ -6,7 +6,7 @@
 #include "scanner.hpp"
 #include "container.hpp"
 #include "token.hpp"
-#include "State.hpp"
+#include "state.hpp"
 #include "FSATable.hpp"
 
 static char get_next_char();
@@ -20,8 +20,6 @@ Token get_token()
     int state = 0, next_state;
     std::vector<std::array<int, NUM_COLUMNS>> table = get_FSA_table();
     std::string token_instance = "";
-
-    std::array<int, 2> passive_states = {LEADING_WHITESPACE, INSIDE_COMMENT};
 
     while (state < FINAL) // not final state
     {
@@ -38,10 +36,9 @@ Token get_token()
         {
             // Not final state
             state = next_state;
+            
             if (!item_in_list(state, passive_states)) 
-            { 
                 token_instance += next_char; 
-            }            
             
             // if current char is \n, then increment line number
             if (next_char == '\n') line_number++;
