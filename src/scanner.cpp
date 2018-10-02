@@ -31,7 +31,7 @@ Token get_token()
             exit(EXIT_FAILURE);
         }
         
-        if (next_state >= FINAL) { break; } // Final state
+        if (next_state >= FINAL) break; // Final state
         else
         {
             // Not final state

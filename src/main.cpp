@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 
     test_scanner();
 
-    if (file.is_open()) { file.close(); };
+    if (file.is_open()) file.close();
 
     return 0;
 }
