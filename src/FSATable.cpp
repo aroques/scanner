@@ -17,19 +17,19 @@ enum Column {OP_DELIM, LETTER, NUMBER, EOF_CHAR, WS, DOLLAR_SIGN, UNDERSCORE, NO
 int col_idx(char c)
 {
     std::string op_delim = "=<>:+-*/%%.(),{};[]";
-    if (op_delim.find(c) != std::string::npos) { return OP_DELIM; }
+    if (op_delim.find(c) != std::string::npos) return OP_DELIM; 
     
-    if (c == '_') { return UNDERSCORE; }
+    if (c == '_') return UNDERSCORE;
 
-    if (c == '$') { return DOLLAR_SIGN; }
+    if (c == '$') return DOLLAR_SIGN;
 
-    if (isspace(c)) { return WS; }
+    if (isspace(c)) return WS;
 
-    if (isdigit(c)) { return NUMBER; }
+    if (isdigit(c)) return NUMBER;
 
-    if (isalpha(c)) { return LETTER; }
+    if (isalpha(c)) return LETTER;
 
-    if (c == EOF) { return EOF_CHAR; }
+    if (c == EOF) return EOF_CHAR;
 
     return NOT_IN_ALPHABET;
 }
