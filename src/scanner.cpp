@@ -9,13 +9,13 @@
 #include "State.hpp"
 #include "FSATable.hpp"
 
-char get_next_char(int &line_number);
+char get_next_char();
 
 Token get_token()
 {
     static int line_number = 1;
 
-    char next_char = get_next_char(line_number);
+    char next_char = get_next_char();
 
     int state = 0, next_state;
     std::vector<std::array<int, NUM_COLUMNS>> table = get_FSA_table();
@@ -43,11 +43,14 @@ Token get_token()
                 token_instance += next_char; 
             }            
             
-            next_char = get_next_char(line_number);
+            // if current char is \n, then increment line number
+            if (next_char == '\n') line_number++;
+
+            next_char = get_next_char();
         }
     }
 
-    std::cin.unget();
+    std::cin.unget(); // unget look-ahead
 
     return Token {
         next_state,
@@ -56,13 +59,11 @@ Token get_token()
     };
 }
 
-char get_next_char(int &line_number)
+char get_next_char()
 {
     char c = EOF;
     
     std::cin.get(c);
-    
-    if (c == '\n') line_number++;
     
     return c;
 }
