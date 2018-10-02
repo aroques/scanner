@@ -4,7 +4,6 @@
 #include <array>
 
 #include "scanner.hpp"
-#include "container.hpp"
 #include "token.hpp"
 #include "state.hpp"
 #include "FSATable.hpp"
@@ -36,8 +35,9 @@ Token get_token()
         {
             // Not final state
             state = next_state;
-            
-            if (!item_in_list(state, passive_states)) 
+
+            bool state_is_active = passive_states.count(state) == 0;
+            if (state_is_active) 
                 token_instance += next_char; 
             
             // if current char is \n, then increment line number

@@ -1,7 +1,6 @@
 #include "token.hpp"
-#include "container.hpp"
 
-#include <vector>
+#include <set>
 #include <iostream>
 
 static char format_str[100] = "%-20s %-10s %-2s\n";
@@ -23,11 +22,11 @@ void print_token(Token t)
 
 int get_token_type(int final_state, std::string token_instance)
 {
-    std::vector<std::string> keywords = { "start", "stop", "loop", "void", 
+    std::set<std::string> keywords = { "start", "stop", "loop", "void", 
         "var", "return", "scan", "out", "program", "if", "then", "let"
     };
 
-    if (item_in_list(token_instance, keywords)) 
+    if (keywords.count(token_instance) > 0) 
     {
         return KEYWORD_TK;
     }
