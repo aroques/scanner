@@ -8,10 +8,14 @@ void test_scanner()
 {
     Token token = get_token();
     
-    while (token.type != END_OF_FILE_TK)
+    do 
     {
         print_token(token);
         std::cout << std::endl;
         token = get_token();
-    }
+    } 
+    while (token.type != END_OF_FILE_TK);
+
+    print_token(token);
+    std::cout << std::endl;
 }

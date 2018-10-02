@@ -21,5 +21,6 @@ struct Token
 };
 
 void print_token(Token t);
+std::string get_token_type(int type);
 
 #endif // !TOKEN_HPP
