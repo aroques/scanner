@@ -8,4 +8,6 @@ enum ERROR
     START_WITH_UNDERSCORE = ERROR
 };
 
+std::string get_error_reason(int error);
+
 #endif // !ERROR_HPP

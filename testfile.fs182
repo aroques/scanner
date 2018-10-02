@@ -1,4 +1,8 @@
-this    is  
-test
-does$ it$ work
-x + y
+$this is my code file$
+a = x + y
+
+_var_this = x + b
+
+b = 3 + 4
+
+c = a*b

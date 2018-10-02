@@ -4,7 +4,7 @@
 std::vector<std::array<int, NUM_COLUMNS>> get_FSA_table()
 {
     std::vector<std::array<int, NUM_COLUMNS>> table;
-    table.push_back({1, 2, 3, 103, 0, 4, -1});
+    table.push_back({1, 2, 3, 103, 0, 4, 201});
     table.push_back({100, 100, 100, 100, 100, 100, 100});
     table.push_back({101, 2, 2, 101, 101, 101, 2});
     table.push_back({8, 102, 3, 102, 102, 102, 102});

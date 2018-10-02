@@ -6,7 +6,7 @@
 #include "scanner.hpp"
 #include "container.hpp"
 #include "Token.hpp"
-#include "Error.hpp"
+#include "error.hpp"
 #include "State.hpp"
 #include "StdinFilter.hpp"
 #include "FSATable.hpp"
@@ -27,7 +27,7 @@ Token get_token()
 
         if (next_state >= ERROR)
         {
-            std::cout << "scanner error" << std::endl;
+            std::cout << "scanner error: " << get_error_reason(next_state) << std::endl;
             exit(EXIT_FAILURE);
         }
         
