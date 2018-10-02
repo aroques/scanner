@@ -17,6 +17,7 @@ Token get_token()
     char next_char = get_next_char();
 
     int state = 0, next_state;
+    bool state_is_active;
     std::vector<std::array<int, NUM_COLUMNS>> table = get_FSA_table();
     std::string token_instance = "";
 
@@ -36,7 +37,7 @@ Token get_token()
             // Not final state
             state = next_state;
 
-            bool state_is_active = passive_states.count(state) == 0;
+            state_is_active = passive_states.count(state) == 0;
             if (state_is_active) 
                 token_instance += next_char; 
             
