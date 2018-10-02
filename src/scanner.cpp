@@ -27,7 +27,8 @@ Token get_token()
         if (next_state == ERROR)
         {
             std::cout << "scanner error: no token starts with the '" 
-                + std::string(1, next_char) + "' character" << std::endl;
+                + std::string(1, next_char) + "' character. line: " 
+                << line_number << std::endl;
             exit(EXIT_FAILURE);
         }
         
