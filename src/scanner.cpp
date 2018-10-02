@@ -6,15 +6,17 @@
 #include "scanner.hpp"
 #include "container.hpp"
 #include "Token.hpp"
-#include "error.hpp"
 #include "State.hpp"
-#include "StdinFilter.hpp"
 #include "FSATable.hpp"
+
+char get_next_char(int &line_number);
 
 Token get_token()
 {
-    StdinFilter filter;
-    char next_char = filter.get_char();
+    static int line_number = 1;
+
+    char next_char = get_next_char(line_number);
+
     int state = 0, next_state;
     std::vector<std::array<int, NUM_COLUMNS>> table = get_FSA_table();
     std::string token_instance = "";
@@ -24,10 +26,10 @@ Token get_token()
     while (state < FINAL) // not final state
     {
         next_state = table[state][col_idx(next_char)];
-
-        if (next_state >= ERROR)
+        if (next_state == ERROR)
         {
-            std::cout << "scanner error: " << get_error_reason(next_state, next_char) << std::endl;
+            std::cout << "scanner error: no token starts with the '" 
+                + std::string(1, next_char) + "' character" << std::endl;
             exit(EXIT_FAILURE);
         }
         
@@ -40,7 +42,8 @@ Token get_token()
             { 
                 token_instance += next_char; 
             }            
-            next_char = filter.get_char();
+            
+            next_char = get_next_char(line_number);
         }
     }
 
@@ -49,6 +52,17 @@ Token get_token()
     return Token {
         next_state,
         token_instance,
-        filter.line_number  
+        line_number  
     };
+}
+
+char get_next_char(int &line_number)
+{
+    char c = EOF;
+    
+    std::cin.get(c);
+    
+    if (c == '\n') line_number++;
+    
+    return c;
 }

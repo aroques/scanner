@@ -5,6 +5,7 @@
 #include <array>
 
 static const int NUM_COLUMNS = 8;
+static const int ERROR = 200;
 
 std::vector<std::array<int, NUM_COLUMNS>> get_FSA_table();
 int col_idx(char c);
