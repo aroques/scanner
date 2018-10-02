@@ -10,7 +10,8 @@ void test_scanner()
     
     while (token.type != END_OF_FILE_TK)
     {
-        std::cout << token.instance << std::endl;
+        print_token(token);
+        std::cout << std::endl;
         token = get_token();
     }
 }

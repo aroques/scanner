@@ -20,5 +20,6 @@ struct Token
     int line_number;
 };
 
+void print_token(Token t);
 
 #endif // !TOKEN_HPP
