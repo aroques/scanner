@@ -6,16 +6,15 @@
 
 void test_scanner()
 {
-    Token token = get_token();
+    Token token;
     
+    print_token_header();
+
     do 
-    {
-        print_token(token);
-        std::cout << std::endl;
+    {       
         token = get_token();
+        print_token(token);
     } 
     while (token.type != END_OF_FILE_TK);
 
-    print_token(token);
-    std::cout << std::endl;
 }

@@ -2,12 +2,19 @@
 
 #include <iostream>
 
+static char format_str[100] = "%-20s %-10s %-2s\n";
+
+void print_token_header()
+{
+    printf(format_str, "Type", "Instance", "Line No");
+    for (int i = 0; i < 39; i++) printf("-");
+    printf("\n");
+}
+
 void print_token(Token t)
 {
-    char format_str[100] = "%-10s %s\n";
-    printf(format_str, "type:", get_token_type(t.type).c_str());
-    printf(format_str, "instance:", t.instance.c_str());
-    printf(format_str, "line no:", std::to_string(t.line_number).c_str());
+    printf(format_str, get_token_type(t.type).c_str(),
+        t.instance.c_str(), std::to_string(t.line_number).c_str());
 }
 
 std::string get_token_type(int type)
