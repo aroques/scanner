@@ -24,6 +24,7 @@ private:
 
 public:
     FSAState(int state);
+    operator int() { return state; }
 
     int get_state();
     bool is_active();

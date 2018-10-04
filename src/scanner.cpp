@@ -17,7 +17,7 @@ Token get_token()
 
     while (!state.is_final())
     {
-        next_state = FSAState::get_next_state(state.get_state(), next_char);
+        next_state = FSAState::get_next_state(int(state), next_char);
         if (next_state.is_error())
         {
             std::cout << "scanner error: no token starts with the '" 
@@ -45,7 +45,7 @@ Token get_token()
     std::cin.unget(); // unget look-ahead
 
     return Token {
-        get_token_type(next_state.get_state(), token_instance),
+        get_token_type(int(next_state), token_instance),
         token_instance,
         line_number  
     };

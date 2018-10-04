@@ -3,14 +3,14 @@
 #include <set>
 #include <iostream>
 
-static char format_str[100] = "%-20s %-10s %-2s\n";
+static char format_str[100] = "%-20s %-15s %-2s\n";
 
 static std::string get_token_type(int type);
 
 void print_token_header()
 {
     printf(format_str, "Type", "Instance", "Line No");
-    for (int i = 0; i < 39; i++) printf("-");
+    for (int i = 0; i < 44; i++) printf("-");
     printf("\n");
 }
 
