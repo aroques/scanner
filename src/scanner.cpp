@@ -12,7 +12,7 @@ Token get_token()
 
     char next_char = get_next_char();
 
-    FSAState state = FSAState(0), next_state = FSAState(0);
+    FSAState state = FSAState(0), next_state;
     std::string token_instance = "";
 
     while (!state.is_final())

@@ -1,6 +1,10 @@
 #include "FSAState.hpp"
 
+// Initialize static members
 std::vector<std::array<int, NUM_COLUMNS>> FSAState::table = get_FSA_table();
+std::set<int> FSAState::passive_states = {LEADING_WHITESPACE, INSIDE_COMMENT};
+
+FSAState::FSAState() {};
 
 FSAState::FSAState(int state)
 {
@@ -14,7 +18,7 @@ int FSAState::get_state()
 
 bool FSAState::is_active()
 {
-    return this->passive_states.count(this->state) == 0;
+    return passive_states.count(this->state) == 0;
 }
 
 bool FSAState::is_final()

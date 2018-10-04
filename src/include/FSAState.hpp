@@ -18,11 +18,12 @@ class FSAState
 {
 private:
     int state;
-    std::set<int>passive_states = {LEADING_WHITESPACE, INSIDE_COMMENT};
-
+    
+    static std::set<int>passive_states;
     static std::vector<std::array<int, NUM_COLUMNS>> table;
 
 public:
+    FSAState();
     FSAState(int state);
     operator int() { return state; }
 
