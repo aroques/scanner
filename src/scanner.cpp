@@ -1,12 +1,8 @@
 #include <iostream>
-#include <vector>
-#include <string>
-#include <array>
 
 #include "scanner.hpp"
 #include "token.hpp"
-#include "state.hpp"
-#include "FSATable.hpp"
+#include "FSAState.hpp"
 
 static char get_next_char();
 
@@ -16,15 +12,13 @@ Token get_token()
 
     char next_char = get_next_char();
 
-    int state = 0, next_state;
-    bool state_is_active;
-    std::vector<std::array<int, NUM_COLUMNS>> table = get_FSA_table();
+    FSAState state = FSAState(0), next_state = FSAState(0);
     std::string token_instance = "";
 
-    while (state < FINAL) // not final state
+    while (!state.is_final())
     {
-        next_state = table[state][col_idx(next_char)];
-        if (next_state == ERROR)
+        next_state = FSAState::get_next_state(state.get_state(), next_char);
+        if (next_state.is_error())
         {
             std::cout << "scanner error: no token starts with the '" 
                 + std::string(1, next_char) + "' character. line: " 
@@ -32,14 +26,13 @@ Token get_token()
             exit(EXIT_FAILURE);
         }
         
-        if (next_state >= FINAL) break; // Final state
+        if (next_state.is_final()) break;
         else
         {
             // Not final state
             state = next_state;
 
-            state_is_active = passive_states.count(state) == 0;
-            if (state_is_active) 
+            if (state.is_active()) 
                 token_instance += next_char; 
             
             // if current char is \n, then increment line number
@@ -52,7 +45,7 @@ Token get_token()
     std::cin.unget(); // unget look-ahead
 
     return Token {
-        get_token_type(next_state, token_instance),
+        get_token_type(next_state.get_state(), token_instance),
         token_instance,
         line_number  
     };

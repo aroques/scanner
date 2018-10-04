@@ -2,8 +2,7 @@
 #define TOKEN_HPP
 
 #include <string>
-
-const int FINAL = 100;
+#include "FSAState.hpp"
 
 enum TokenType
 {
